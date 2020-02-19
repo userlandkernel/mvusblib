@@ -7,27 +7,147 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B845889237C77940032BA69 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B845888237C77940032BA69 /* main.c */; };
+		8B6820A223FD32FB0030179A /* mvftdi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68209E23FD32FB0030179A /* mvftdi.c */; };
+		8B6820A323FD32FB0030179A /* mvusblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A023FD32FB0030179A /* mvusblib.c */; };
+		8B6820B723FD33970030179A /* pongo.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A623FD33320030179A /* pongo.c */; };
+		8B6820B823FD33B40030179A /* mvftdi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68209E23FD32FB0030179A /* mvftdi.c */; };
+		8B6820B923FD33B40030179A /* mvusblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A023FD32FB0030179A /* mvusblib.c */; };
+		8B6820C523FD33F70030179A /* mvdcsd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820AA23FD333E0030179A /* mvdcsd.c */; };
+		8B6820C623FD33FC0030179A /* mvftdi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68209E23FD32FB0030179A /* mvftdi.c */; };
+		8B6820C723FD33FC0030179A /* mvusblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A023FD32FB0030179A /* mvusblib.c */; };
+		8B6820D623FD38330030179A /* mvftdi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68209E23FD32FB0030179A /* mvftdi.c */; };
+		8B6820D723FD38330030179A /* mvusblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A023FD32FB0030179A /* mvusblib.c */; };
+		8B6820D823FD3BBB0030179A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820A823FD33380030179A /* main.c */; };
+		8B6820DC23FD3C570030179A /* astdongle.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820D923FD3C540030179A /* astdongle.c */; };
+		8B6820DD23FD3C920030179A /* astdongle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B6820CE23FD38240030179A /* astdongle */; };
+		8B6820DE23FD3CC00030179A /* mvdcsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B6820BE23FD33F00030179A /* mvdcsd */; };
+		8B6820DF23FD3CC40030179A /* pongosh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B6820B023FD338F0030179A /* pongosh */; };
+		8B6820E023FD3CCD0030179A /* iousbcap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B845885237C77940032BA69 /* iousbcap */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8B6820EC23FD3CF80030179A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B84587D237C77920032BA69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B845884237C77920032BA69;
+			remoteInfo = iousbcap;
+		};
+		8B6820EE23FD3CF80030179A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B84587D237C77920032BA69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B6820AF23FD338F0030179A;
+			remoteInfo = pongosh;
+		};
+		8B6820F023FD3CF80030179A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B84587D237C77920032BA69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B6820BD23FD33F00030179A;
+			remoteInfo = mvdcsd;
+		};
+		8B6820F223FD3CF80030179A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B84587D237C77920032BA69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B6820CD23FD38240030179A;
+			remoteInfo = astdongle;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		8B845883237C77920032BA69 /* CopyFiles */ = {
+		8B6820AE23FD338F0030179A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = $PROJECT_DIR/$PROJECT_NAME/examples;
+			dstSubfolderSpec = 0;
+			files = (
+				8B6820DF23FD3CC40030179A /* pongosh in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820BC23FD33F00030179A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = $PROJECT_DIR/$PROJECT_NAME/examples;
+			dstSubfolderSpec = 0;
+			files = (
+				8B6820DE23FD3CC00030179A /* mvdcsd in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820CC23FD38240030179A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = $PROJECT_DIR/$PROJECT_NAME/examples;
+			dstSubfolderSpec = 0;
+			files = (
+				8B6820DD23FD3C920030179A /* astdongle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820E323FD3CE40030179A /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8B845883237C77920032BA69 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = $PROJECT_DIR/$PROJECT_NAME/examples;
+			dstSubfolderSpec = 0;
+			files = (
+				8B6820E023FD3CCD0030179A /* iousbcap in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B68209E23FD32FB0030179A /* mvftdi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mvftdi.c; path = iousbcap/mvftdi.c; sourceTree = "<group>"; };
+		8B68209F23FD32FB0030179A /* mvftdi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mvftdi.h; path = iousbcap/mvftdi.h; sourceTree = "<group>"; };
+		8B6820A023FD32FB0030179A /* mvusblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mvusblib.c; path = iousbcap/mvusblib.c; sourceTree = "<group>"; };
+		8B6820A123FD32FB0030179A /* mvusblib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mvusblib.h; path = iousbcap/mvusblib.h; sourceTree = "<group>"; };
+		8B6820A623FD33320030179A /* pongo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pongo.c; path = iousbcap/examples/pongo.c; sourceTree = "<group>"; };
+		8B6820A823FD33380030179A /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = iousbcap/examples/main.c; sourceTree = "<group>"; };
+		8B6820AA23FD333E0030179A /* mvdcsd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mvdcsd.c; path = iousbcap/examples/mvdcsd.c; sourceTree = "<group>"; };
+		8B6820B023FD338F0030179A /* pongosh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pongosh; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6820BE23FD33F00030179A /* mvdcsd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mvdcsd; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6820CE23FD38240030179A /* astdongle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = astdongle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6820D923FD3C540030179A /* astdongle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = astdongle.c; path = iousbcap/examples/astdongle.c; sourceTree = "<group>"; };
+		8B6820DA23FD3C540030179A /* astdongle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = astdongle.h; path = iousbcap/examples/astdongle.h; sourceTree = "<group>"; };
+		8B6820E523FD3CE40030179A /* usbtools */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = usbtools; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B845885237C77940032BA69 /* iousbcap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = iousbcap; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B845888237C77940032BA69 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8B6820AD23FD338F0030179A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820BB23FD33F00030179A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820CB23FD38240030179A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B845882237C77920032BA69 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +158,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B6820A423FD33150030179A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8B68209E23FD32FB0030179A /* mvftdi.c */,
+				8B68209F23FD32FB0030179A /* mvftdi.h */,
+				8B6820A023FD32FB0030179A /* mvusblib.c */,
+				8B6820A123FD32FB0030179A /* mvusblib.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		8B6820A523FD33230030179A /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				8B6820DA23FD3C540030179A /* astdongle.h */,
+				8B6820D923FD3C540030179A /* astdongle.c */,
+				8B6820AA23FD333E0030179A /* mvdcsd.c */,
+				8B6820A623FD33320030179A /* pongo.c */,
+				8B6820A823FD33380030179A /* main.c */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
 		8B84587C237C77920032BA69 = {
 			isa = PBXGroup;
 			children = (
-				8B845887237C77940032BA69 /* iousbcap */,
+				8B6820A423FD33150030179A /* src */,
+				8B6820A523FD33230030179A /* tools */,
 				8B845886237C77940032BA69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,21 +194,87 @@
 			isa = PBXGroup;
 			children = (
 				8B845885237C77940032BA69 /* iousbcap */,
+				8B6820B023FD338F0030179A /* pongosh */,
+				8B6820BE23FD33F00030179A /* mvdcsd */,
+				8B6820CE23FD38240030179A /* astdongle */,
+				8B6820E523FD3CE40030179A /* usbtools */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8B845887237C77940032BA69 /* iousbcap */ = {
-			isa = PBXGroup;
-			children = (
-				8B845888237C77940032BA69 /* main.c */,
-			);
-			path = iousbcap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8B6820AF23FD338F0030179A /* pongosh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B6820B423FD33900030179A /* Build configuration list for PBXNativeTarget "pongosh" */;
+			buildPhases = (
+				8B6820AC23FD338F0030179A /* Sources */,
+				8B6820AD23FD338F0030179A /* Frameworks */,
+				8B6820AE23FD338F0030179A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pongosh;
+			productName = pongosh;
+			productReference = 8B6820B023FD338F0030179A /* pongosh */;
+			productType = "com.apple.product-type.tool";
+		};
+		8B6820BD23FD33F00030179A /* mvdcsd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B6820C223FD33F10030179A /* Build configuration list for PBXNativeTarget "mvdcsd" */;
+			buildPhases = (
+				8B6820BA23FD33F00030179A /* Sources */,
+				8B6820BB23FD33F00030179A /* Frameworks */,
+				8B6820BC23FD33F00030179A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mvdcsd;
+			productName = mvdcsd;
+			productReference = 8B6820BE23FD33F00030179A /* mvdcsd */;
+			productType = "com.apple.product-type.tool";
+		};
+		8B6820CD23FD38240030179A /* astdongle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B6820D223FD38240030179A /* Build configuration list for PBXNativeTarget "astdongle" */;
+			buildPhases = (
+				8B6820CA23FD38240030179A /* Sources */,
+				8B6820CB23FD38240030179A /* Frameworks */,
+				8B6820CC23FD38240030179A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = astdongle;
+			productName = astdongle;
+			productReference = 8B6820CE23FD38240030179A /* astdongle */;
+			productType = "com.apple.product-type.tool";
+		};
+		8B6820E423FD3CE40030179A /* usbtools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B6820E923FD3CE40030179A /* Build configuration list for PBXNativeTarget "usbtools" */;
+			buildPhases = (
+				8B6820E323FD3CE40030179A /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B6820ED23FD3CF80030179A /* PBXTargetDependency */,
+				8B6820EF23FD3CF80030179A /* PBXTargetDependency */,
+				8B6820F123FD3CF80030179A /* PBXTargetDependency */,
+				8B6820F323FD3CF80030179A /* PBXTargetDependency */,
+			);
+			name = usbtools;
+			productName = usbtools;
+			productReference = 8B6820E523FD3CE40030179A /* usbtools */;
+			productType = "com.apple.product-type.tool";
+		};
 		8B845884237C77920032BA69 /* iousbcap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B84588C237C77950032BA69 /* Build configuration list for PBXNativeTarget "iousbcap" */;
@@ -91,6 +301,26 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = kernelprogrammer;
 				TargetAttributes = {
+					8B6820AF23FD338F0030179A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZCB79JJ2EN;
+						ProvisioningStyle = Automatic;
+					};
+					8B6820BD23FD33F00030179A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZCB79JJ2EN;
+						ProvisioningStyle = Automatic;
+					};
+					8B6820CD23FD38240030179A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZCB79JJ2EN;
+						ProvisioningStyle = Automatic;
+					};
+					8B6820E423FD3CE40030179A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZCB79JJ2EN;
+						ProvisioningStyle = Automatic;
+					};
 					8B845884237C77920032BA69 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZCB79JJ2EN;
@@ -110,23 +340,152 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				8B6820E423FD3CE40030179A /* usbtools */,
 				8B845884237C77920032BA69 /* iousbcap */,
+				8B6820AF23FD338F0030179A /* pongosh */,
+				8B6820BD23FD33F00030179A /* mvdcsd */,
+				8B6820CD23FD38240030179A /* astdongle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8B6820AC23FD338F0030179A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B6820B823FD33B40030179A /* mvftdi.c in Sources */,
+				8B6820B723FD33970030179A /* pongo.c in Sources */,
+				8B6820B923FD33B40030179A /* mvusblib.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820BA23FD33F00030179A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B6820C623FD33FC0030179A /* mvftdi.c in Sources */,
+				8B6820C523FD33F70030179A /* mvdcsd.c in Sources */,
+				8B6820C723FD33FC0030179A /* mvusblib.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B6820CA23FD38240030179A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B6820D623FD38330030179A /* mvftdi.c in Sources */,
+				8B6820DC23FD3C570030179A /* astdongle.c in Sources */,
+				8B6820D723FD38330030179A /* mvusblib.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B845881237C77920032BA69 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B845889237C77940032BA69 /* main.c in Sources */,
+				8B6820A223FD32FB0030179A /* mvftdi.c in Sources */,
+				8B6820A323FD32FB0030179A /* mvusblib.c in Sources */,
+				8B6820D823FD3BBB0030179A /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8B6820ED23FD3CF80030179A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B845884237C77920032BA69 /* iousbcap */;
+			targetProxy = 8B6820EC23FD3CF80030179A /* PBXContainerItemProxy */;
+		};
+		8B6820EF23FD3CF80030179A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B6820AF23FD338F0030179A /* pongosh */;
+			targetProxy = 8B6820EE23FD3CF80030179A /* PBXContainerItemProxy */;
+		};
+		8B6820F123FD3CF80030179A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B6820BD23FD33F00030179A /* mvdcsd */;
+			targetProxy = 8B6820F023FD3CF80030179A /* PBXContainerItemProxy */;
+		};
+		8B6820F323FD3CF80030179A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B6820CD23FD38240030179A /* astdongle */;
+			targetProxy = 8B6820F223FD3CF80030179A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8B6820B523FD33900030179A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B6820B623FD33900030179A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8B6820C323FD33F10030179A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B6820C423FD33F10030179A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8B6820D323FD38240030179A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B6820D423FD38240030179A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8B6820EA23FD3CE40030179A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B6820EB23FD3CE40030179A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = ZCB79JJ2EN;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		8B84588A237C77950032BA69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -217,6 +576,7 @@
 		8B84588D237C77950032BA69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = ZCB79JJ2EN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -225,6 +585,7 @@
 		8B84588E237C77950032BA69 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = ZCB79JJ2EN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -233,6 +594,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8B6820B423FD33900030179A /* Build configuration list for PBXNativeTarget "pongosh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B6820B523FD33900030179A /* Debug */,
+				8B6820B623FD33900030179A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8B6820C223FD33F10030179A /* Build configuration list for PBXNativeTarget "mvdcsd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B6820C323FD33F10030179A /* Debug */,
+				8B6820C423FD33F10030179A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8B6820D223FD38240030179A /* Build configuration list for PBXNativeTarget "astdongle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B6820D323FD38240030179A /* Debug */,
+				8B6820D423FD38240030179A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8B6820E923FD3CE40030179A /* Build configuration list for PBXNativeTarget "usbtools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B6820EA23FD3CE40030179A /* Debug */,
+				8B6820EB23FD3CE40030179A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8B845880237C77920032BA69 /* Build configuration list for PBXProject "iousbcap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -249,6 +642,7 @@
 				8B84588E237C77950032BA69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

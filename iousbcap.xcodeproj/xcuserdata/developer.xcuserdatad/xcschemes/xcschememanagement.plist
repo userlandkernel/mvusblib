@@ -4,15 +4,60 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>astdongle.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>iousbcap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>mvdcsd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>pongosh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>usbtools.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8B6820AF23FD338F0030179A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B6820BD23FD33F00030179A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B6820CD23FD38240030179A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B6820E423FD3CE40030179A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8B845884237C77920032BA69</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B845892237C77BC0032BA69</key>
 		<dict>
 			<key>primary</key>
 			<true/>
