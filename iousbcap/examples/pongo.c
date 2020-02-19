@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
     cmd = strdup(argv[1]);
     cmd = strcat(cmd, "\n");
     
-    int vid = 0x05ac;
+    int vid = USBVENDOR_APPLE_INC;
     int pid = 0x4141;
     
     fprintf(stderr, "%s: Starting iousbcap device lookup for %#x:%#x\n", __func__, vid, pid);

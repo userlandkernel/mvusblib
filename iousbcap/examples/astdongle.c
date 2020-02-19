@@ -11,13 +11,14 @@
 #include "mvftdi.h"
 #include <string.h>
 #include <mach/mach.h>
-ASTDongle dongle = {
+
+ASTDongleDescriptor dongle = {
     .pid = 0x1009,
-    .vid = 0x05ac,
+    .vid = USBVENDOR_APPLE_INC,
     .location = 0,
     .uart = {
         .pid = 0x6001,
-        .vid = 0x0403,
+        .vid = USBVENDOR_FUTURE_TECH_DEV_INTL_LTD,
         .location = 0xfa430000,
         .ftdi = NULL
     }
@@ -72,15 +73,19 @@ int callbackDongleUARTFound(IOUSBDeviceInterface** iface){
 }
 
 int callbackDongleFound(IOUSBDeviceInterface** iface) {
+    
     kern_return_t err = KERN_SUCCESS;
-    fprintf(stderr, "%s: Found the AST2 Dongle.\n", __func__);
-    
-    
-    
     UInt32 locationid = 0;
-    (*iface)->GetLocationID(iface, &locationid);
+    UInt8 subclass = 0;
+    UInt8 class = 0;
     
-    printf("Opening AST2 Dongle @ %#x\n", locationid);
+    fprintf(stderr, "%s: Found the AST2 Dongle.\n", __func__);
+   
+    err = (*iface)->GetLocationID(iface, &locationid);
+    err = (*iface)->GetDeviceClass(iface, &class);
+    err = (*iface)->GetDeviceSubClass(iface, &subclass);
+    
+    printf("Opening AST2 Dongle (class: %s, sub: %s) @ %#x\n", mvusblib_usbclass_string(class), mvusblib_usbclass_string(subclass), locationid);
     err = mvusblib_opendevice(iface);
     
     if( KERN_SUCCESS != err) {

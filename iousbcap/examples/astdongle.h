@@ -18,14 +18,14 @@ typedef struct ASTDongleUART {
     uint32_t location;
     mvftdi_ctx_t ftdi;
     IOUSBDeviceInterface** iface;
-} ASTDongleUART;
+} ASTDongleUARTDescriptor;
 typedef struct ASTDongle {
     uint32_t pid;
     uint32_t vid;
     uint32_t location;
-    ASTDongleUART uart;
+    ASTDongleUARTDescriptor uart;
     IOUSBDeviceInterface **iface;
-} ASTDongle;
+} ASTDongleDescriptor;
 
 
 #endif /* astdongle_h */

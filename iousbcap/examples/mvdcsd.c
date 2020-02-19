@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
     
     lednumber = (int)atoi(argv[1]);
 
-    vid = 0x0403;
+    vid = USBVENDOR_FUTURE_TECH_DEV_INTL_LTD;
     pid = 0x8a88;
     locationid = 0;
 
