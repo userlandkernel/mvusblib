@@ -1,19 +1,24 @@
-all: mvdcsd iousbcap pongosh astdongle
+INCLUDE_DIRS=-I ../ -I ../../
+MVUSBLIB_SRC=../mvusblib.c ../../vendors.c ../../products.c ../../apple.c ../../futuretechdev.c
+MVUSBLIB_LDFLAGS=-framework IOKit -framework CoreFoundation
+MVFTDILIB_SRC=../mvftdi.c
+
+all: builddir mvdcsd iousbcap pongosh astdongle
+
+builddir:
+	mkdir -p build/
 
 mvdcsd:
-	clang -I ../ mvdcsd.c ../mvusblib.c ../mvftdi.c -o mvdcsd -framework IOKit -framework CoreFoundation
+	clang $(INCLUDE_DIRS) mvdcsd.c $(MVUSBLIB_SRC) $(MVFTDILIB_SRC) -o build/mvdcsd $(MVUSBLIB_LDFLAGS)
 
 iousbcap:
-	clang -I ../ main.c ../mvusblib.c -o iousbcap -framework IOKit -framework CoreFoundation
+	clang $(INCLUDE_DIRS) main.c $(MVUSBLIB_SRC) -o build/iousbcap $(MVUSBLIB_LDFLAGS)
 
 pongosh:
-	clang -I ../ pongo.c ../mvusblib.c -o pongosh -framework IOKit -framework CoreFoundation
+	clang $(INCLUDE_DIRS) pongo.c $(MVUSBLIB_SRC) -o build/pongosh $(MVUSBLIB_LDFLAGS)
 
 astdongle:
-	clang -I ../ astdongle.c ../mvusblib.c ../mvftdi.c -o astdongle -framework IOKit -framework CoreFoundation
+	clang $(INCLUDE_DIRS) astdongle.c $(MVUSBLIB_SRC) $(MVFTDILIB_SRC) -o build/astdongle $(MVUSBLIB_LDFLAGS)
 
 clean:
-	rm iousbcap
-	rm mvdcsd
-	rm pongosh
-	rm astdongle
+	rm -rf build/
