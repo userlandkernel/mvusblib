@@ -12,18 +12,23 @@
 #include <IOKit/IOCFPlugIn.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include "mvusblib.h"
+#include "apple.h"
 
-static uint16_t gVendor = 0;
-static uint16_t gProduct = 0;
-static uint16_t gLocation = 0;
-static mvusblib_awaitcallback_t gCallback = NULL;
-static IONotificationPortRef gNotifyPort = MACH_PORT_NULL;
-static io_iterator_t gRawAddedIter = IO_OBJECT_NULL;
-static io_iterator_t gRawRemovedIter = IO_OBJECT_NULL;
+static uint16_t gVendor = 0; // Global Temporary Vendor ID
+static uint16_t gProduct = 0; // Global Temporary Product ID
+static uint16_t gLocation = 0; // Global Temporary Location ID
+static mvusblib_awaitcallback_t gCallback = NULL; // Global Temporary Callback
+
+static IONotificationPortRef gNotifyPort = MACH_PORT_NULL; // Global Notification Port
+static io_iterator_t gRawAddedIter = IO_OBJECT_NULL; // Global Added Device Iterator
+static io_iterator_t gRawRemovedIter = IO_OBJECT_NULL; // Global Removed Device Iterator
+
 
 int mvusblib_control_msg(IOUSBDeviceInterface** dev, int type, int reqno, int value, int index, const char *msg, int timeout)
 {
 
+    kern_return_t err = KERN_SUCCESS;
+    
 	// Require a device interface argument
 	if(!dev) {
 		fprintf(stderr, "%s: no interface provided. Argument is mandatory to operate.\n", __func__);
@@ -44,24 +49,23 @@ int mvusblib_control_msg(IOUSBDeviceInterface** dev, int type, int reqno, int va
 	req.wLength = strlen(msg);
 	req.wLenDone = 0;
 
-	kern_return_t err = KERN_SUCCESS;
-
 	// send the request
 	err = (*dev)->DeviceRequest(dev, &req);
 
 	return err;
 }
 
+
 void mvusblib_freedevice(IOUSBDeviceInterface** iface) {
     
-    if(iface){
+    if(iface) {
         (*iface)->Release(iface);
         iface = NULL;
     }
     
 }
 
-int mvusblib_opendevice(IOUSBDeviceInterface** iface) {
+kern_return_t mvusblib_opendevice(IOUSBDeviceInterface** iface) {
     
     kern_return_t err = KERN_SUCCESS;
     
@@ -76,7 +80,7 @@ int mvusblib_opendevice(IOUSBDeviceInterface** iface) {
     return err;
 }
 
-int mvusblib_closedevice(IOUSBDeviceInterface** iface) {
+kern_return_t mvusblib_closedevice(IOUSBDeviceInterface** iface) {
     
     kern_return_t err = KERN_SUCCESS;
     
@@ -92,7 +96,7 @@ int mvusblib_closedevice(IOUSBDeviceInterface** iface) {
     return err;
 }
 
-int mvusblib_claiminterface(io_service_t dev, IOUSBDeviceInterface* iface) {
+kern_return_t mvusblib_claiminterface(io_service_t dev, IOUSBDeviceInterface* iface) {
 
 	kern_return_t err = KERN_SUCCESS;
 	SInt32 score = 0;
@@ -108,7 +112,7 @@ int mvusblib_claiminterface(io_service_t dev, IOUSBDeviceInterface* iface) {
 	/* Lookup the usbdevice interface from the plugin interface */
 	err = (*pluginIface)->QueryInterface(pluginIface, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), (LPVOID*)iface);
 
-	if ( kIOReturnSuccess != err ) {
+	if ( KERN_SUCCESS != err ) {
 		fprintf(stderr, "%s: Could not lookup usb interface from the plugin interface.\n", __func__);
 		return err;
 	}
@@ -129,37 +133,49 @@ int mvusblib_writedevice(IOUSBInterfaceInterface** iface, uint16_t address, uint
     return KERN_NOT_SUPPORTED;
 }
 
-IOReturn ConfigureDevice(IOUSBDeviceInterface **dev)
+/**
+ @function mvusblib_configure_device
+ @brief Configures a USB device accordingly
+ @param dev Reference to a USB interface reference
+ @param configIndex Index of the configuration descriptor for the configuration
+ @return KERN_SUCCESS on success, KERN_FAILURE on failure
+ */
+kern_return_t mvusblib_configure_device(IOUSBDeviceInterface **dev, int configIndex)
 {
     UInt8 numConfig;
-    IOReturn kr;
+    kern_return_t err = KERN_SUCCESS;
     IOUSBConfigurationDescriptorPtr configDesc;
-    //Get the number of configurations. The sample code always chooses
-    //the first configuration (at index 0) but your code may need a
-    //different one
-    kr = (*dev)->GetNumberOfConfigurations(dev, &numConfig);
+    
+    //Get the number of configurations.
+    err = (*dev)->GetNumberOfConfigurations(dev, &numConfig);
     if (!numConfig)
-        return -1;
+        return KERN_FAILURE;
+    
     //Get the configuration descriptor for index 0
-    kr = (*dev)->GetConfigurationDescriptorPtr(dev, 0, &configDesc);
-    if (kr)
+    err = (*dev)->GetConfigurationDescriptorPtr(dev, 0, &configDesc);
+    if (err)
     {
-        printf("Couldn’t get configuration descriptor for index %d (err = %08x)\n", 0, kr);
-        return -1;
+        printf("Couldn’t get configuration descriptor for index %d (err = %08x)\n", 0, err);
+        return KERN_FAILURE;
     }
     //Set the device’s configuration. The configuration value is found in
     //the bConfigurationValue field of the configuration descriptor
-    kr = (*dev)->SetConfiguration(dev, configDesc->bConfigurationValue);
-    if (kr)
+    err = (*dev)->SetConfiguration(dev, configDesc->bConfigurationValue);
+    if (err)
     {
-        printf("Couldn’t set configuration to value %d (err = %08x)\n", 0,
-               kr);
-        return -1;
+        printf("Couldn’t set configuration to value %d (err = %08x)\n", 0, err);
+        return KERN_FAILURE;
     }
-    return kIOReturnSuccess;
+    return KERN_SUCCESS;
 }
 
-void RawDeviceAdded(void *refCon, io_iterator_t iterator)
+/**
+ @function mvusblib_found_device
+ @brief Callback to be called upon device detection by mvusblib_awaitdevice
+ @param refCon reference argument (unused at this time)
+ @param iterator Iterator object for the USB device
+*/
+void mvusblib_found_device(void *refCon, io_iterator_t iterator)
 {
     kern_return_t err;
     io_service_t usbDevice;
@@ -180,7 +196,7 @@ void RawDeviceAdded(void *refCon, io_iterator_t iterator)
         err = IOObjectRelease(usbDevice);
         if ((kIOReturnSuccess != err) || !plugInInterface)
         {
-            printf("Unable to create a plug-in (%08x)\n", err);
+            fprintf(stderr, "%s: Unable to create a plug-in (%s)\n", __func__, mach_error_string(err));
             continue;
         }
         //Now create the device interface
@@ -192,8 +208,7 @@ void RawDeviceAdded(void *refCon, io_iterator_t iterator)
         (*plugInInterface)->Release(plugInInterface);
         if (result || !dev)
         {
-            printf("Couldn’t create a device interface (%08x)\n",
-                   (int) result);
+            fprintf(stderr, "%s: Couldn’t create a device interface (%d)\n", __func__, (int)result);
             continue;
         }
         //Check these values for confirmation
@@ -201,29 +216,35 @@ void RawDeviceAdded(void *refCon, io_iterator_t iterator)
         err = (*dev)->GetDeviceProduct(dev, &product);
         err = (*dev)->GetLocationID(dev, &location);
         
+        mvusblib_vendorname_t vendorString = {};
+        mvusblib_productname_t productString = {};
+        
+        mvusblib_vendor_string(vendor, vendorString);
+        mvusblib_product_string(vendor, product, productString);
+        
         if ((vendor != gVendor) || (product != gProduct))
         {
-            printf("Found unwanted device (vendor = %#x, product = %#x, location = %#x)\n", vendor, product, location);
+            fprintf(stderr, "%s: Found unwanted device (vendor = %s, product = %s, location = %#x)\n", __func__,vendorString, productString, location);
             (void) (*dev)->Release(dev);
             dev = NULL;
             continue;
         }
         else if(gLocation) {
             if(gLocation != location) {
-                printf("Found unwanted device (vendor = %#x, product = %#x, location = %#x)\n", vendor, product, location);
+                fprintf(stderr, "%s: Found unwanted device (vendor = %s, product = %s, location = %#x)\n", __func__, vendorString, productString, location);
                 (void) (*dev)->Release(dev);
                 dev = NULL;
                 continue;
             }
         }
         
-        printf("Found the device (vendor = %#x, product = %#x, location = %#x)\n", vendor, product, location);
+        printf("Found the device (vendor = %s, product = %s, location = %#x)\n", vendorString, productString, location);
         
         //Open the device to change its state
         err = (*dev)->USBDeviceOpen(dev);
         if (err != kIOReturnSuccess)
         {
-            printf("Unable to open device: %08x\n", err);
+            fprintf(stderr, "%s: Unable to open device: %s\n", __func__, mach_error_string(err));
             (void) (*dev)->Release(dev);
             continue;
         }
@@ -238,27 +259,30 @@ void RawDeviceAdded(void *refCon, io_iterator_t iterator)
         err = (*dev)->USBDeviceClose(dev);
         
     }
-    
-    
 }
 
-
-void RawDeviceRemoved(void *refCon, io_iterator_t iterator)
+/**
+ @function mvusblib_removed_device
+ @brief Callback to be called upon device removal by mvusblib_awaitdevice
+ @param refCon reference argument (unused at this time)
+ @param iterator Iterator object for the USB device
+ */
+void mvusblib_removed_device(void *refCon, io_iterator_t iterator)
 {
-    kern_return_t kr;
+    kern_return_t err = KERN_SUCCESS;
     io_service_t object;
     while ((object = IOIteratorNext(iterator)))
     {
-        kr = IOObjectRelease(object);
-        if (kr != kIOReturnSuccess)
+        err = IOObjectRelease(object);
+        if (err != KERN_SUCCESS)
         {
-            printf("Couldn’t release raw device object: %08x\n", kr);
+            fprintf(stderr, "%s: Couldn’t release raw device object: %s\n", __func__, mach_error_string(err));
             continue;
         }
     }
 }
 
-int mvusblib_awaitdevice(int vid, int pid, int locationid, mvusblib_awaitcallback_t callback) {
+kern_return_t mvusblib_awaitdevice(mvusblib_vendor_t vid, mvusblib_product_t pid, mvusblib_location_t locationid, mvusblib_awaitcallback_t callback) {
 
 	CFMutableDictionaryRef matching = NULL;
 	kern_return_t err = KERN_SUCCESS;
@@ -291,10 +315,6 @@ int mvusblib_awaitdevice(int vid, int pid, int locationid, mvusblib_awaitcallbac
         return KERN_FAILURE;
     }
     
-    // Set matching to our vendor id and product id
-   // CFDictionarySetValue(matching, CFSTR(kUSBVendorName), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &vid));
-    //CFDictionarySetValue(matching, CFSTR(kUSBProductName), CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &pid));
-    
     gNotifyPort = IONotificationPortCreate(masterPort);
     runLoopSource = IONotificationPortGetRunLoopSource(gNotifyPort);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource,
@@ -307,15 +327,15 @@ int mvusblib_awaitdevice(int vid, int pid, int locationid, mvusblib_awaitcallbac
     matching = (CFMutableDictionaryRef) CFRetain(matching);
 
     // Listen for device add
-    err = IOServiceAddMatchingNotification(gNotifyPort, kIOFirstMatchNotification, matching, RawDeviceAdded, NULL, &gRawAddedIter);
+    err = IOServiceAddMatchingNotification(gNotifyPort, kIOFirstMatchNotification, matching, mvusblib_found_device, NULL, &gRawAddedIter);
 
-    RawDeviceAdded(NULL, gRawAddedIter);
+    mvusblib_found_device(NULL, gRawAddedIter);
     
     mach_port_deallocate(mach_task_self(), masterPort);
     masterPort = MACH_PORT_NULL;
     
     // Listen for device remove
-    err = IOServiceAddMatchingNotification(gNotifyPort, kIOTerminatedNotification, matching, RawDeviceRemoved, NULL, &gRawRemovedIter);
+    err = IOServiceAddMatchingNotification(gNotifyPort, kIOTerminatedNotification, matching, mvusblib_removed_device, NULL, &gRawRemovedIter);
     
     return err;
 }
@@ -380,7 +400,7 @@ int mvusblib_printdevices(void){
                         CFNumberGetValue(_locationid, kCFNumberSInt32Type, &locationidValue);
                 }
 
-		printf("FOUND UNMATCHED DEVICE %#x:%#x @ %#x\n", vidValue, pidValue, locationidValue);
+		fprintf(stderr, "FOUND UNMATCHED DEVICE %#x:%#x @ %#x\n", vidValue, pidValue, locationidValue);
 	}
 
 	// At this point we no longer need the iterator
@@ -389,4 +409,79 @@ int mvusblib_printdevices(void){
 		iter = IO_OBJECT_NULL;
 	}
 	return err;
+}
+
+
+const char* mvusblib_usbclass_string(mvusblib_usbclass_t class) {
+    switch (class) {
+        
+        case USBCLASS_USAGEINFO:
+            return "See iface descriptors";
+            
+        case USBCLASS_AUDIO:
+            return "Audio";
+            
+        case USBCLASS_COMM_AND_CDC:
+            return "Communications and CDC Control";
+            
+        case USBCLASS_HID:
+            return "Human Interface Device";
+            
+        case USBCLASS_PHYS:
+            return "Physical";
+            
+        case USBCLASS_IMAGE:
+            return "Image";
+            
+        case USBCLASS_PRINTER:
+            return "Printer";
+            
+        case USBCLASS_MASS_STORAGE:
+            return "Mass Storage Device";
+            
+        case USBCLASS_HUB:
+            return "USB Hub";
+            
+        case USBCLASS_CDC_DATA:
+            return "CDC Data";
+            
+        case USBCLASS_SMARTCARD:
+            return "Smart Card";
+            
+        case USBCLASS_CONTENT_SECURITY:
+            return "Content Security";
+            
+        case USBCLASS_VIDEO:
+            return "Video";
+            
+        case USBCLASS_PERSONAL_HEALTHCARE:
+            return "Personal Healthcare";
+            
+        case USBCLASS_AUDIOVIDEO_DEVICES:
+            return "Audio/Video Devices";
+            
+        case USBCLASS_BILLBOARD_DEVICE:
+            return "Billboard Device Class";
+            
+        case USBCLASS_USB_C_BRIDGE:
+            return "USB Type-C Bridge Class";
+            
+        case USBCLASS_DIAG:
+            return "Diagnostic Device";
+            
+        case USBCLASS_WIRELESS_CONTROLLER:
+            return "Wireless Controller";
+            
+        case USBCLASS_MISC:
+            return "Miscellaneous";
+            
+        case USBCLASS_APP_SPECIFIC:
+            return "Application Specific";
+            
+        case USBCLASS_VENDOR_SPECIFIC:
+            return "Vendor Specific";
+            
+        default:
+            return "Unknown";
+    }
 }

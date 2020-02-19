@@ -23,6 +23,22 @@
 		8B6820DE23FD3CC00030179A /* mvdcsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B6820BE23FD33F00030179A /* mvdcsd */; };
 		8B6820DF23FD3CC40030179A /* pongosh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B6820B023FD338F0030179A /* pongosh */; };
 		8B6820E023FD3CCD0030179A /* iousbcap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B845885237C77940032BA69 /* iousbcap */; };
+		8B6820F623FD86130030179A /* apple.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F423FD86130030179A /* apple.c */; };
+		8B6820FD23FD8F890030179A /* products.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820FB23FD8F890030179A /* products.c */; };
+		8B6820FF23FD90CD0030179A /* vendors.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F823FD8C210030179A /* vendors.c */; };
+		8B68210023FD90CE0030179A /* vendors.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F823FD8C210030179A /* vendors.c */; };
+		8B68210123FD90CF0030179A /* vendors.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F823FD8C210030179A /* vendors.c */; };
+		8B68210223FD90CF0030179A /* vendors.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F823FD8C210030179A /* vendors.c */; };
+		8B68210323FD90D20030179A /* apple.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F423FD86130030179A /* apple.c */; };
+		8B68210423FD90D20030179A /* apple.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F423FD86130030179A /* apple.c */; };
+		8B68210523FD90D30030179A /* apple.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820F423FD86130030179A /* apple.c */; };
+		8B68210623FD90D90030179A /* products.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820FB23FD8F890030179A /* products.c */; };
+		8B68210723FD90D90030179A /* products.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820FB23FD8F890030179A /* products.c */; };
+		8B68210823FD90D90030179A /* products.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B6820FB23FD8F890030179A /* products.c */; };
+		8B68211023FD9FAE0030179A /* futuretechdev.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68210C23FD9E7F0030179A /* futuretechdev.c */; };
+		8B68211123FD9FAF0030179A /* futuretechdev.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68210C23FD9E7F0030179A /* futuretechdev.c */; };
+		8B68211223FD9FAF0030179A /* futuretechdev.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68210C23FD9E7F0030179A /* futuretechdev.c */; };
+		8B68211323FD9FAF0030179A /* futuretechdev.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B68210C23FD9E7F0030179A /* futuretechdev.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +139,14 @@
 		8B6820D923FD3C540030179A /* astdongle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = astdongle.c; path = iousbcap/examples/astdongle.c; sourceTree = "<group>"; };
 		8B6820DA23FD3C540030179A /* astdongle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = astdongle.h; path = iousbcap/examples/astdongle.h; sourceTree = "<group>"; };
 		8B6820E523FD3CE40030179A /* usbtools */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = usbtools; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6820F423FD86130030179A /* apple.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = apple.c; sourceTree = "<group>"; };
+		8B6820F523FD86130030179A /* apple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple.h; sourceTree = "<group>"; };
+		8B6820F823FD8C210030179A /* vendors.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vendors.c; sourceTree = "<group>"; };
+		8B6820F923FD8C210030179A /* vendors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vendors.h; sourceTree = "<group>"; };
+		8B6820FB23FD8F890030179A /* products.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = products.c; sourceTree = "<group>"; };
+		8B6820FC23FD8F890030179A /* products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = products.h; sourceTree = "<group>"; };
+		8B68210C23FD9E7F0030179A /* futuretechdev.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = futuretechdev.c; sourceTree = "<group>"; };
+		8B68210D23FD9E7F0030179A /* futuretechdev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = futuretechdev.h; sourceTree = "<group>"; };
 		8B845885237C77940032BA69 /* iousbcap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = iousbcap; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,10 +185,9 @@
 		8B6820A423FD33150030179A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				8B68209E23FD32FB0030179A /* mvftdi.c */,
-				8B68209F23FD32FB0030179A /* mvftdi.h */,
-				8B6820A023FD32FB0030179A /* mvusblib.c */,
-				8B6820A123FD32FB0030179A /* mvusblib.h */,
+				8B68211523FDDEF90030179A /* usb */,
+				8B68211423FDDEF20030179A /* ftdi */,
+				8B6820F723FD865A0030179A /* identification */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -179,6 +202,47 @@
 				8B6820A823FD33380030179A /* main.c */,
 			);
 			name = tools;
+			sourceTree = "<group>";
+		};
+		8B6820F723FD865A0030179A /* identification */ = {
+			isa = PBXGroup;
+			children = (
+				8B68210A23FD9E3E0030179A /* vendor */,
+				8B6820FC23FD8F890030179A /* products.h */,
+				8B6820FB23FD8F890030179A /* products.c */,
+				8B6820F923FD8C210030179A /* vendors.h */,
+				8B6820F823FD8C210030179A /* vendors.c */,
+			);
+			name = identification;
+			sourceTree = "<group>";
+		};
+		8B68210A23FD9E3E0030179A /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8B6820F523FD86130030179A /* apple.h */,
+				8B6820F423FD86130030179A /* apple.c */,
+				8B68210D23FD9E7F0030179A /* futuretechdev.h */,
+				8B68210C23FD9E7F0030179A /* futuretechdev.c */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		8B68211423FDDEF20030179A /* ftdi */ = {
+			isa = PBXGroup;
+			children = (
+				8B68209E23FD32FB0030179A /* mvftdi.c */,
+				8B68209F23FD32FB0030179A /* mvftdi.h */,
+			);
+			name = ftdi;
+			sourceTree = "<group>";
+		};
+		8B68211523FDDEF90030179A /* usb */ = {
+			isa = PBXGroup;
+			children = (
+				8B6820A123FD32FB0030179A /* mvusblib.h */,
+				8B6820A023FD32FB0030179A /* mvusblib.c */,
+			);
+			name = usb;
 			sourceTree = "<group>";
 		};
 		8B84587C237C77920032BA69 = {
@@ -355,8 +419,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6820B823FD33B40030179A /* mvftdi.c in Sources */,
+				8B68210623FD90D90030179A /* products.c in Sources */,
+				8B68211123FD9FAF0030179A /* futuretechdev.c in Sources */,
 				8B6820B723FD33970030179A /* pongo.c in Sources */,
+				8B68210323FD90D20030179A /* apple.c in Sources */,
 				8B6820B923FD33B40030179A /* mvusblib.c in Sources */,
+				8B68210023FD90CE0030179A /* vendors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,8 +433,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6820C623FD33FC0030179A /* mvftdi.c in Sources */,
+				8B68210723FD90D90030179A /* products.c in Sources */,
+				8B68211223FD9FAF0030179A /* futuretechdev.c in Sources */,
 				8B6820C523FD33F70030179A /* mvdcsd.c in Sources */,
+				8B68210423FD90D20030179A /* apple.c in Sources */,
 				8B6820C723FD33FC0030179A /* mvusblib.c in Sources */,
+				8B68210123FD90CF0030179A /* vendors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +447,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6820D623FD38330030179A /* mvftdi.c in Sources */,
+				8B68210823FD90D90030179A /* products.c in Sources */,
+				8B68211323FD9FAF0030179A /* futuretechdev.c in Sources */,
 				8B6820DC23FD3C570030179A /* astdongle.c in Sources */,
+				8B68210523FD90D30030179A /* apple.c in Sources */,
 				8B6820D723FD38330030179A /* mvusblib.c in Sources */,
+				8B68210223FD90CF0030179A /* vendors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +460,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B6820FD23FD8F890030179A /* products.c in Sources */,
+				8B6820FF23FD90CD0030179A /* vendors.c in Sources */,
+				8B68211023FD9FAE0030179A /* futuretechdev.c in Sources */,
+				8B6820F623FD86130030179A /* apple.c in Sources */,
 				8B6820A223FD32FB0030179A /* mvftdi.c in Sources */,
 				8B6820A323FD32FB0030179A /* mvusblib.c in Sources */,
 				8B6820D823FD3BBB0030179A /* main.c in Sources */,
