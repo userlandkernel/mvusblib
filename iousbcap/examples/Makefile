@@ -12,7 +12,7 @@ mvdcsd:
 	clang $(INCLUDE_DIRS) mvdcsd.c $(MVUSBLIB_SRC) $(MVFTDILIB_SRC) -o build/mvdcsd $(MVUSBLIB_LDFLAGS)
 
 iousbcap:
-	clang $(INCLUDE_DIRS) main.c $(MVUSBLIB_SRC) -o build/iousbcap $(MVUSBLIB_LDFLAGS)
+	clang $(INCLUDE_DIRS) iousbcap.c $(MVUSBLIB_SRC) -o build/iousbcap $(MVUSBLIB_LDFLAGS)
 
 pongosh:
 	clang $(INCLUDE_DIRS) pongo.c $(MVUSBLIB_SRC) -o build/pongosh $(MVUSBLIB_LDFLAGS)
